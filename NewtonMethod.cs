@@ -2,6 +2,8 @@
 using System.Drawing;
 using System.Windows.Forms;
 using aziretParser;
+using info.lundin.math;
+using System.Threading;
 
 namespace VKR_Project
 {

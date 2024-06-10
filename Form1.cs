@@ -22,7 +22,7 @@ namespace VKR_Project
             dataGridView1.Columns[4].Name = "F''(X)";
         }
 
-        private void StartButton_Click(object sender, EventArgs e)
+        private void startButton_Click(object sender, EventArgs e)
         {
             var newtonMethod = new NewtonMethod();
             newtonMethod.Start(Function, InputX0, inputR, inputEpsilon, inputDelta, inputMax, progressBar1, dataGridView1, this);

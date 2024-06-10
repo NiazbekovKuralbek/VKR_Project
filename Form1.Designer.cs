@@ -87,6 +87,7 @@
             this.inputDelta.Name = "inputDelta";
             this.inputDelta.Size = new System.Drawing.Size(149, 20);
             this.inputDelta.TabIndex = 5;
+            this.inputDelta.Text = "1e-14";
             // 
             // labelDelta
             // 
@@ -112,6 +113,7 @@
             this.inputEpsilon.Name = "inputEpsilon";
             this.inputEpsilon.Size = new System.Drawing.Size(149, 20);
             this.inputEpsilon.TabIndex = 3;
+            this.inputEpsilon.Text = "1e-28";
             // 
             // inputR
             // 
@@ -119,6 +121,7 @@
             this.inputR.Name = "inputR";
             this.inputR.Size = new System.Drawing.Size(149, 20);
             this.inputR.TabIndex = 7;
+            this.inputR.Text = "10";
             // 
             // labelEpsilon
             // 
@@ -153,6 +156,7 @@
             this.inputMax.Name = "inputMax";
             this.inputMax.Size = new System.Drawing.Size(149, 20);
             this.inputMax.TabIndex = 9;
+            this.inputMax.Text = "100";
             // 
             // InputX0
             // 
@@ -160,6 +164,7 @@
             this.InputX0.Name = "InputX0";
             this.InputX0.Size = new System.Drawing.Size(149, 20);
             this.InputX0.TabIndex = 1;
+            this.InputX0.Text = "1";
             // 
             // groupBox1
             // 
@@ -193,6 +198,7 @@
             this.startButton.TabIndex = 16;
             this.startButton.Text = "Start";
             this.startButton.UseVisualStyleBackColor = true;
+            this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
             // progressBar1
             // 
@@ -219,11 +225,27 @@
             // 
             // Function
             // 
+            this.Function.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.Function.FormattingEnabled = true;
+            this.Function.Items.AddRange(new object[] {
+            "(x-4)^2",
+            "x^2-2*x-1",
+            "x^2-4*sin(x)",
+            "(x^2-4*sin(x))^2",
+            "(4-x^2)^2",
+            "0,4+x-0,1*x^2",
+            "0,5*x^2-sin(x)",
+            "2*x-2-sin(x)",
+            "(x-2)^2-ln(x)",
+            "x*exp(-x)",
+            "(x^2-4*sin(x))^2",
+            "x^3-5*x^2+x+5"});
             this.Function.Location = new System.Drawing.Point(9, 38);
             this.Function.Name = "Function";
             this.Function.Size = new System.Drawing.Size(249, 21);
             this.Function.TabIndex = 12;
+            this.Function.TabStop = false;
+            this.Function.Text = "(x-4)^2";
             // 
             // labelFunction
             // 
