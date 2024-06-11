@@ -27,5 +27,28 @@ namespace VKR_Project
             var newtonMethod = new NewtonMethod();
             newtonMethod.Start(Function, InputX0, inputR, inputEpsilon, inputDelta, inputMax, progressBar1, dataGridView1, this);
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ClearTextBoxes(this);
+            dataGridView1.Rows.Clear(); // Очистка DataGridView
+        }
+
+        private void ClearTextBoxes(Control control)
+        {
+            foreach (Control c in control.Controls)
+            {
+                if (c is TextBox)
+                {
+                    ((TextBox)c).Clear();
+                }
+                else if (c.HasChildren)
+                {
+                    ClearTextBoxes(c);
+                }
+            }
+        }
+
+
     }
 }

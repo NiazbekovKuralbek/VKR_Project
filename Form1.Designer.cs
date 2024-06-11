@@ -46,6 +46,8 @@
             this.labelFunction = new System.Windows.Forms.Label();
             this.startButton = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.Solution = new System.Windows.Forms.TextBox();
+            this.ValueOfFunction = new System.Windows.Forms.TextBox();
             this.Label23 = new System.Windows.Forms.Label();
             this.Label22 = new System.Windows.Forms.Label();
             this.expDDfxBox = new System.Windows.Forms.TextBox();
@@ -74,8 +76,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.labelSolution = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.ValueOfFunction = new System.Windows.Forms.TextBox();
-            this.Solution = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -248,11 +251,11 @@
             // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(12, 418);
+            this.startButton.Location = new System.Drawing.Point(18, 454);
             this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(52, 20);
+            this.startButton.Size = new System.Drawing.Size(126, 41);
             this.startButton.TabIndex = 16;
-            this.startButton.Text = "Start";
+            this.startButton.Text = "Run NM";
             this.startButton.UseVisualStyleBackColor = true;
             this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
@@ -264,10 +267,6 @@
             this.groupBox2.Controls.Add(this.Label22);
             this.groupBox2.Controls.Add(this.expDDfxBox);
             this.groupBox2.Controls.Add(this.expDfxBox);
-            this.groupBox2.Controls.Add(this.Label20);
-            this.groupBox2.Controls.Add(this.Label19);
-            this.groupBox2.Controls.Add(this.Label18);
-            this.groupBox2.Controls.Add(this.Label17);
             this.groupBox2.Controls.Add(this.ddfxBox);
             this.groupBox2.Controls.Add(this.dfxBox);
             this.groupBox2.Controls.Add(this.Label10);
@@ -290,9 +289,25 @@
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Location = new System.Drawing.Point(292, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(506, 800);
+            this.groupBox2.Size = new System.Drawing.Size(550, 624);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
+            // 
+            // Solution
+            // 
+            this.Solution.Location = new System.Drawing.Point(37, 281);
+            this.Solution.Name = "Solution";
+            this.Solution.ReadOnly = true;
+            this.Solution.Size = new System.Drawing.Size(293, 20);
+            this.Solution.TabIndex = 61;
+            // 
+            // ValueOfFunction
+            // 
+            this.ValueOfFunction.Location = new System.Drawing.Point(44, 312);
+            this.ValueOfFunction.Name = "ValueOfFunction";
+            this.ValueOfFunction.ReadOnly = true;
+            this.ValueOfFunction.Size = new System.Drawing.Size(293, 20);
+            this.ValueOfFunction.TabIndex = 60;
             // 
             // Label23
             // 
@@ -331,7 +346,7 @@
             // Label20
             // 
             this.Label20.AutoSize = true;
-            this.Label20.Location = new System.Drawing.Point(107, 618);
+            this.Label20.Location = new System.Drawing.Point(296, 678);
             this.Label20.Name = "Label20";
             this.Label20.Size = new System.Drawing.Size(45, 13);
             this.Label20.TabIndex = 55;
@@ -340,7 +355,7 @@
             // Label19
             // 
             this.Label19.AutoSize = true;
-            this.Label19.Location = new System.Drawing.Point(11, 618);
+            this.Label19.Location = new System.Drawing.Point(200, 678);
             this.Label19.Name = "Label19";
             this.Label19.Size = new System.Drawing.Size(90, 13);
             this.Label19.TabIndex = 54;
@@ -349,7 +364,7 @@
             // Label18
             // 
             this.Label18.AutoSize = true;
-            this.Label18.Location = new System.Drawing.Point(107, 592);
+            this.Label18.Location = new System.Drawing.Point(296, 652);
             this.Label18.Name = "Label18";
             this.Label18.Size = new System.Drawing.Size(45, 13);
             this.Label18.TabIndex = 53;
@@ -358,7 +373,7 @@
             // Label17
             // 
             this.Label17.AutoSize = true;
-            this.Label17.Location = new System.Drawing.Point(10, 592);
+            this.Label17.Location = new System.Drawing.Point(199, 652);
             this.Label17.Name = "Label17";
             this.Label17.Size = new System.Drawing.Size(87, 13);
             this.Label17.TabIndex = 52;
@@ -417,7 +432,7 @@
             // Label21
             // 
             this.Label21.AutoSize = true;
-            this.Label21.Location = new System.Drawing.Point(7, 666);
+            this.Label21.Location = new System.Drawing.Point(13, 585);
             this.Label21.Name = "Label21";
             this.Label21.Size = new System.Drawing.Size(53, 13);
             this.Label21.TabIndex = 45;
@@ -533,33 +548,52 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(6, 19);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(494, 244);
+            this.dataGridView1.Size = new System.Drawing.Size(537, 244);
             this.dataGridView1.TabIndex = 0;
             // 
-            // ValueOfFunction
+            // button1
             // 
-            this.ValueOfFunction.Location = new System.Drawing.Point(44, 312);
-            this.ValueOfFunction.Name = "ValueOfFunction";
-            this.ValueOfFunction.ReadOnly = true;
-            this.ValueOfFunction.Size = new System.Drawing.Size(293, 20);
-            this.ValueOfFunction.TabIndex = 60;
+            this.button1.Location = new System.Drawing.Point(150, 454);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(130, 41);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "Draw Graph";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // Solution
+            // button2
             // 
-            this.Solution.Location = new System.Drawing.Point(37, 281);
-            this.Solution.Name = "Solution";
-            this.Solution.ReadOnly = true;
-            this.Solution.Size = new System.Drawing.Size(293, 20);
-            this.Solution.TabIndex = 61;
+            this.button2.Location = new System.Drawing.Point(18, 500);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(126, 36);
+            this.button2.TabIndex = 18;
+            this.button2.Text = "Take values from Excel-file";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(150, 501);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(130, 35);
+            this.button3.TabIndex = 19;
+            this.button3.Text = "Clear";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 850);
+            this.ClientSize = new System.Drawing.Size(847, 649);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.Label20);
+            this.Controls.Add(this.Label17);
+            this.Controls.Add(this.Label19);
+            this.Controls.Add(this.Label18);
             this.Name = "Form1";
             this.Text = "Form1";
             this.groupBox1.ResumeLayout(false);
@@ -568,6 +602,7 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -621,5 +656,8 @@
         private System.Windows.Forms.Button startButton;
         internal System.Windows.Forms.TextBox Solution;
         internal System.Windows.Forms.TextBox ValueOfFunction;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }
