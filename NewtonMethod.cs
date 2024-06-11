@@ -45,7 +45,7 @@ namespace VKR_Project
         {
             try
             {
-                decimal x0, x1 = 0, fx0, fx1 = 0, fxminustol, fxplustol;
+                decimal x0, x1 = 0, fx0, fx1 = 0;
                 decimal dp, dp0 = 0, dfx0, ddfx0, dfx1 = 0, ddfx1 = 0, r, Tolerance, Delta;
                 int k_max;
 
@@ -64,6 +64,12 @@ namespace VKR_Project
                 dfx0 = DF(x0);
                 ddfx0 = DDF(x0);
                 dp = dfx0 / ddfx0;
+
+                form.expDfxBox.Text = DFunc;
+                form.expDDfxBox.Text = DDFunc;
+
+                var stopwatch = new System.Diagnostics.Stopwatch();
+                stopwatch.Start();
 
                 while (k < k_max && cond == 0)
                 {
@@ -111,48 +117,36 @@ namespace VKR_Project
 
                 progressBar1.Visible = false;
 
-                fxminustol = F(x1 - Delta);
-                fxplustol = F(x1 + Delta);
+                stopwatch.Stop();
+                form.TimeBox.Text = stopwatch.Elapsed.TotalSeconds.ToString("0.00");
+                form.NumberOfIterationsBox.Text = k.ToString();
+                form.RelErrorBox.Text = RelError.ToString("0e0");
+
                 SolutionOfTask = x1;
                 ValueOfFunction = fx1;
 
-                form.TextBox2.Text = fxminustol.ToString();
-                form.textBox3.Text = fxplustol.ToString();
-                form.Label18.Text = (fx1 - fxminustol).ToString("0e0");
-                form.Label20.Text = (fx1 + fxplustol).ToString("0e0");
+                form.Solution.Text = SolutionOfTask.ToString();
+                form.ValueOfFunction.Text = ValueOfFunction.ToString();
+
+                form.TextBox2.Text = F(x1 - Delta).ToString();
+                form.textBox3.Text = F(x1 + Delta).ToString();
+                form.Label18.Text = "";
+                form.Label20.Text = "";
                 form.dfxBox.Text = dfx1.ToString();
                 form.ddfxBox.Text = ddfx1.ToString();
                 form.condBox.Text = cond.ToString();
 
                 if (cond == 2)
                 {
-                    if (fx1 < fxminustol && fx1 < fxplustol)
+                    if (Math.Abs(fx1) <= Tolerance)
                     {
                         form.Label21.ForeColor = Color.Green;
-                        form.Label21.Text = "Результат X* является минимумом функции потому, что" +
-                                            " f(X*) < f(X*-Delta) and f(X*) < f(X*+Delta).";
-                        return;
+                        form.Label21.Text = "Результат X* является корнем функции потому, что f(X*) ≈ 0.";
                     }
-                    else if (fx1 > fxminustol && fx1 > fxplustol)
-                    {
-                        form.Label21.ForeColor = Color.Green;
-                        form.Label21.Text = "Результат X* является максимумом функции потому, что" +
-                                            " f(X*) > f(X*-Delta) and f(X*) > f(X*+Delta).";
-                        return;
-                    }
-                    else if (fx1 < fxminustol && fx1 > fxplustol)
+                    else
                     {
                         form.Label21.ForeColor = Color.DarkRed;
-                        form.Label21.Text = "X* - точка перегиба." +
-                                            " Результат X* не является экстремумом функции потому, что" +
-                                            " f(X*) < f(X*-Delta) and f(X*) > f(X*+Delta).";
-                    }
-                    else if (fx1 > fxminustol && fx1 < fxplustol)
-                    {
-                        form.Label21.ForeColor = Color.DarkRed;
-                        form.Label21.Text = "Решение не найдено. X* - точка перегиба." +
-                                            " Результат X* не является экстремумом функции потому, что" +
-                                            " f(X*) > f(X*-Delta) and f(X*) < f(X*+Delta).";
+                        form.Label21.Text = "Решение не является корнем функции, так как f(X*) не равно нулю.";
                     }
                 }
                 else if (cond == 1)
@@ -174,5 +168,6 @@ namespace VKR_Project
                                 "Также проверьте введенную функцию. В качестве переменных используйте 'x'.");
             }
         }
+
     }
 }

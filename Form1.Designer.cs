@@ -39,12 +39,12 @@
             this.inputMax = new System.Windows.Forms.TextBox();
             this.InputX0 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.startButton = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.Function = new System.Windows.Forms.ComboBox();
             this.labelFunction = new System.Windows.Forms.Label();
+            this.startButton = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Label23 = new System.Windows.Forms.Label();
             this.Label22 = new System.Windows.Forms.Label();
@@ -71,11 +71,11 @@
             this.Label14 = new System.Windows.Forms.Label();
             this.Label13 = new System.Windows.Forms.Label();
             this.Label12 = new System.Windows.Forms.Label();
-            this.ValueOfFunction = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.Solution = new System.Windows.Forms.TextBox();
             this.labelSolution = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ValueOfFunction = new System.Windows.Forms.TextBox();
+            this.Solution = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -190,16 +190,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ввод данных";
             // 
-            // startButton
-            // 
-            this.startButton.Location = new System.Drawing.Point(12, 418);
-            this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(52, 20);
-            this.startButton.TabIndex = 16;
-            this.startButton.Text = "Start";
-            this.startButton.UseVisualStyleBackColor = true;
-            this.startButton.Click += new System.EventHandler(this.startButton_Click);
-            // 
             // progressBar1
             // 
             this.progressBar1.Location = new System.Drawing.Point(6, 363);
@@ -256,8 +246,20 @@
             this.labelFunction.TabIndex = 10;
             this.labelFunction.Text = "Функция f(x):";
             // 
+            // startButton
+            // 
+            this.startButton.Location = new System.Drawing.Point(12, 418);
+            this.startButton.Name = "startButton";
+            this.startButton.Size = new System.Drawing.Size(52, 20);
+            this.startButton.TabIndex = 16;
+            this.startButton.Text = "Start";
+            this.startButton.UseVisualStyleBackColor = true;
+            this.startButton.Click += new System.EventHandler(this.startButton_Click);
+            // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.Solution);
+            this.groupBox2.Controls.Add(this.ValueOfFunction);
             this.groupBox2.Controls.Add(this.Label23);
             this.groupBox2.Controls.Add(this.Label22);
             this.groupBox2.Controls.Add(this.expDDfxBox);
@@ -283,9 +285,7 @@
             this.groupBox2.Controls.Add(this.Label14);
             this.groupBox2.Controls.Add(this.Label13);
             this.groupBox2.Controls.Add(this.Label12);
-            this.groupBox2.Controls.Add(this.ValueOfFunction);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.Solution);
             this.groupBox2.Controls.Add(this.labelSolution);
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Location = new System.Drawing.Point(292, 12);
@@ -509,14 +509,6 @@
             this.Label12.TabIndex = 35;
             this.Label12.Text = "RelError:";
             // 
-            // ValueOfFunction
-            // 
-            this.ValueOfFunction.Enabled = false;
-            this.ValueOfFunction.Location = new System.Drawing.Point(42, 310);
-            this.ValueOfFunction.Name = "ValueOfFunction";
-            this.ValueOfFunction.Size = new System.Drawing.Size(149, 20);
-            this.ValueOfFunction.TabIndex = 4;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -526,14 +518,6 @@
             this.label2.Size = new System.Drawing.Size(28, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "f(x*):";
-            // 
-            // Solution
-            // 
-            this.Solution.Enabled = false;
-            this.Solution.Location = new System.Drawing.Point(42, 279);
-            this.Solution.Name = "Solution";
-            this.Solution.Size = new System.Drawing.Size(149, 20);
-            this.Solution.TabIndex = 2;
             // 
             // labelSolution
             // 
@@ -551,6 +535,22 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(494, 244);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // ValueOfFunction
+            // 
+            this.ValueOfFunction.Location = new System.Drawing.Point(44, 312);
+            this.ValueOfFunction.Name = "ValueOfFunction";
+            this.ValueOfFunction.ReadOnly = true;
+            this.ValueOfFunction.Size = new System.Drawing.Size(293, 20);
+            this.ValueOfFunction.TabIndex = 60;
+            // 
+            // Solution
+            // 
+            this.Solution.Location = new System.Drawing.Point(37, 281);
+            this.Solution.Name = "Solution";
+            this.Solution.ReadOnly = true;
+            this.Solution.Size = new System.Drawing.Size(293, 20);
+            this.Solution.TabIndex = 61;
             // 
             // Form1
             // 
@@ -591,8 +591,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label labelSolution;
-        private System.Windows.Forms.TextBox Solution;
-        private System.Windows.Forms.TextBox ValueOfFunction;
         private System.Windows.Forms.Label label2;
         internal System.Windows.Forms.Label Label23;
         internal System.Windows.Forms.Label Label22;
@@ -621,5 +619,7 @@
         internal System.Windows.Forms.Label Label12;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Button startButton;
+        internal System.Windows.Forms.TextBox Solution;
+        internal System.Windows.Forms.TextBox ValueOfFunction;
     }
 }
