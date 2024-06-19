@@ -3,8 +3,8 @@ using System.Drawing;
 using System.Windows.Forms;
 using aziretParser;
 using info.lundin.math;
+using System.Threading.Tasks;
 using System.Threading;
-using Extreme.Statistics;
 
 namespace VKR_Project
 {
@@ -37,8 +37,8 @@ namespace VKR_Project
         {
             try
             {
-                decimal x0, x1 = 0, fx0, fx1 = 0;
-                decimal dp, dfx0, dfx1 = 0, r, Tolerance, Delta, m;
+                decimal x0, bestX1 = 0, fx0, bestFx1 = 0;
+                decimal dp, dfx0, dfx1 = 0, r, Tolerance, Delta;
                 int k_max;
 
                 func = funcBox.Text;
@@ -47,7 +47,7 @@ namespace VKR_Project
                 Delta = Convert.ToDecimal(double.Parse(deltaBox.Text));
                 x0 = decimal.Parse(pointBox.Text);
                 k_max = int.Parse(k_maxBox.Text);
-                m = decimal.Parse(parametrMBox.Text);
+                int maxM = int.Parse(parametrMBox.Text);
 
                 DFunc = aziretParser.Derivative.ReturnDerivative(func);
                 k = 0;
@@ -57,36 +57,64 @@ namespace VKR_Project
 
                 form.expDfxBox.Text = DFunc;
 
-                k++;
-                dp = m * (fx0 / dfx0);
-                x1 = x0 - dp;
+                decimal bestRelError = decimal.MaxValue;
+                int bestCond = 0;
+                object lockObject = new object();
 
-                fx1 = F(x1);
-                dfx1 = DF(x1);
-
-                RelError = 2 * Math.Abs(dp) / (Math.Abs(x1) + Delta);
-                cond = 0;
-                if (RelError <= Delta)
+                ParallelOptions options = new ParallelOptions { MaxDegreeOfParallelism = Environment.ProcessorCount };
+                Parallel.For(1, maxM + 1, options, m =>
                 {
-                    cond = 2;
-                }
+                    decimal localX1 = 0, localFx1 = 0;
+                    decimal localDp, localDfx1 = 0, localRelError;
+                    int localCond = 0, localK = 1;
+
+                    localDp = m * (fx0 / dfx0);
+                    localX1 = x0 - localDp;
+
+                    localFx1 = F(localX1);
+                    localDfx1 = DF(localX1);
+
+                    localRelError = 2 * Math.Abs(localDp) / (Math.Abs(localX1) + Delta);
+                    if (localRelError <= Delta)
+                    {
+                        localCond = 2;
+                    }
+
+                    lock (lockObject)
+                    {
+                        if (localRelError < bestRelError)
+                        {
+                            bestX1 = localX1;
+                            bestFx1 = localFx1;
+                            dfx1 = localDfx1;
+                            bestRelError = localRelError;
+                            bestCond = localCond;
+                            k = localK;
+                        }
+                    }
+                });
+
+                x0 = bestX1;
+                fx0 = bestFx1;
+                cond = bestCond;
+                RelError = bestRelError;
 
                 progressBar1.Visible = true;
                 progressBar1.Maximum = k_max;
                 progressBar1.Value = k;
 
                 // Добавление данных в DataGridView
-                dataGridView1.Rows.Add(k, x1, fx1, dfx1);
+                dataGridView1.Rows.Add(k, bestX1, bestFx1, dfx1);
 
                 // Передача значений в Start для продолжения итераций
-                ContinueIterations(funcBox, pointBox, rBox, tolBox, deltaBox, k_maxBox, x1, fx1, dfx1, cond, k, RelError, progressBar1, dataGridView1, form, m);
+                ContinueIterations(funcBox, pointBox, rBox, tolBox, deltaBox, k_maxBox, bestX1, bestFx1, dfx1, bestCond, k, bestRelError, progressBar1, dataGridView1, form, maxM);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Произошла ошибка!" + Environment.NewLine +
-                                "Проверьте введенные данные и попробуйте снова.I1");
+                MessageBox.Show($"Произошла ошибка: {ex.Message}\nПроверьте введенные данные и попробуйте снова.");
             }
         }
+
 
         private void ContinueIterations(ComboBox funcBox, TextBox pointBox, TextBox rBox, TextBox tolBox, TextBox deltaBox, TextBox k_maxBox, decimal x0, decimal fx0, decimal dfx0, int cond, int k, decimal RelError, ProgressBar progressBar1, DataGridView dataGridView1, Form1 form, decimal m)
         {
@@ -149,6 +177,9 @@ namespace VKR_Project
                 form.Label20.Text = "";
                 form.dfxBox.Text = dfx1.ToString();
                 form.condBox.Text = cond.ToString();
+                form.OutputParametrM.Text = m.ToString();
+
+
 
                 if (cond == 2)
                 {
@@ -177,7 +208,5 @@ namespace VKR_Project
                                 "Также проверьте введенную функцию. В качестве переменных используйте 'x'.");
             }
         }
-
-
     }
 }

@@ -75,6 +75,11 @@
             this.ValueOfFunction = new System.Windows.Forms.TextBox();
             this.Solution = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.Sigma = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.OutputParametrM = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.buttonSpeed = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -163,7 +168,7 @@
             this.InputX0.Name = "InputX0";
             this.InputX0.Size = new System.Drawing.Size(149, 20);
             this.InputX0.TabIndex = 1;
-            this.InputX0.Text = "1";
+            this.InputX0.Text = "2";
             // 
             // groupBox1
             // 
@@ -188,7 +193,6 @@
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ввод данных";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // progressBar1
             // 
@@ -203,6 +207,7 @@
             this.ParametrM.Name = "ParametrM";
             this.ParametrM.Size = new System.Drawing.Size(192, 20);
             this.ParametrM.TabIndex = 14;
+            this.ParametrM.Text = "1";
             // 
             // label1
             // 
@@ -237,7 +242,7 @@
             this.Function.Size = new System.Drawing.Size(249, 21);
             this.Function.TabIndex = 12;
             this.Function.TabStop = false;
-            this.Function.Text = "(x-4)^2";
+            this.Function.Text = "x^2-1";
             // 
             // labelFunction
             // 
@@ -250,7 +255,7 @@
             // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(18, 454);
+            this.startButton.Location = new System.Drawing.Point(18, 424);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(126, 41);
             this.startButton.TabIndex = 16;
@@ -296,7 +301,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(150, 454);
+            this.button1.Location = new System.Drawing.Point(150, 424);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(130, 41);
             this.button1.TabIndex = 17;
@@ -306,18 +311,19 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(18, 500);
+            this.button2.Location = new System.Drawing.Point(18, 470);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(126, 36);
             this.button2.TabIndex = 18;
             this.button2.Text = "Take values from Excel-file";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(150, 501);
+            this.button3.Location = new System.Drawing.Point(18, 512);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(130, 35);
+            this.button3.Size = new System.Drawing.Size(262, 40);
             this.button3.TabIndex = 19;
             this.button3.Text = "Clear";
             this.button3.UseVisualStyleBackColor = true;
@@ -380,7 +386,7 @@
             // Label15
             // 
             this.Label15.AutoSize = true;
-            this.Label15.Location = new System.Drawing.Point(12, 462);
+            this.Label15.Location = new System.Drawing.Point(12, 477);
             this.Label15.Name = "Label15";
             this.Label15.Size = new System.Drawing.Size(58, 13);
             this.Label15.TabIndex = 38;
@@ -421,7 +427,7 @@
             // 
             // TimeBox
             // 
-            this.TimeBox.Location = new System.Drawing.Point(269, 420);
+            this.TimeBox.Location = new System.Drawing.Point(269, 423);
             this.TimeBox.Name = "TimeBox";
             this.TimeBox.ReadOnly = true;
             this.TimeBox.Size = new System.Drawing.Size(100, 20);
@@ -430,7 +436,7 @@
             // Label16
             // 
             this.Label16.AutoSize = true;
-            this.Label16.Location = new System.Drawing.Point(13, 492);
+            this.Label16.Location = new System.Drawing.Point(13, 507);
             this.Label16.Name = "Label16";
             this.Label16.Size = new System.Drawing.Size(61, 13);
             this.Label16.TabIndex = 44;
@@ -439,7 +445,7 @@
             // Label21
             // 
             this.Label21.AutoSize = true;
-            this.Label21.Location = new System.Drawing.Point(13, 529);
+            this.Label21.Location = new System.Drawing.Point(13, 564);
             this.Label21.Name = "Label21";
             this.Label21.Size = new System.Drawing.Size(53, 13);
             this.Label21.TabIndex = 45;
@@ -447,7 +453,7 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(80, 459);
+            this.textBox3.Location = new System.Drawing.Point(80, 474);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(289, 20);
@@ -455,7 +461,7 @@
             // 
             // TextBox2
             // 
-            this.TextBox2.Location = new System.Drawing.Point(80, 489);
+            this.TextBox2.Location = new System.Drawing.Point(80, 504);
             this.TextBox2.Name = "TextBox2";
             this.TextBox2.ReadOnly = true;
             this.TextBox2.Size = new System.Drawing.Size(289, 20);
@@ -513,6 +519,10 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.Sigma);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.OutputParametrM);
+            this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.Solution);
             this.groupBox2.Controls.Add(this.ValueOfFunction);
             this.groupBox2.Controls.Add(this.Label22);
@@ -540,13 +550,57 @@
             this.groupBox2.Size = new System.Drawing.Size(550, 624);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // Sigma
+            // 
+            this.Sigma.Location = new System.Drawing.Point(145, 534);
+            this.Sigma.Name = "Sigma";
+            this.Sigma.Size = new System.Drawing.Size(192, 20);
+            this.Sigma.TabIndex = 16;
+            this.Sigma.TextChanged += new System.EventHandler(this.Sigma_TextChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(13, 537);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(118, 13);
+            this.label4.TabIndex = 56;
+            this.label4.Text = "Скорость сходимости";
+            // 
+            // OutputParametrM
+            // 
+            this.OutputParametrM.Location = new System.Drawing.Point(76, 448);
+            this.OutputParametrM.Name = "OutputParametrM";
+            this.OutputParametrM.ReadOnly = true;
+            this.OutputParametrM.Size = new System.Drawing.Size(100, 20);
+            this.OutputParametrM.TabIndex = 63;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(11, 451);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(61, 13);
+            this.label3.TabIndex = 62;
+            this.label3.Text = "Paremetr M";
+            // 
+            // buttonSpeed
+            // 
+            this.buttonSpeed.Location = new System.Drawing.Point(150, 470);
+            this.buttonSpeed.Name = "buttonSpeed";
+            this.buttonSpeed.Size = new System.Drawing.Size(130, 36);
+            this.buttonSpeed.TabIndex = 56;
+            this.buttonSpeed.Text = "Сalculate the speeds";
+            this.buttonSpeed.UseVisualStyleBackColor = true;
+            this.buttonSpeed.Click += new System.EventHandler(this.buttonSpeed_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(847, 649);
+            this.Controls.Add(this.buttonSpeed);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -618,5 +672,10 @@
         internal System.Windows.Forms.TextBox ValueOfFunction;
         internal System.Windows.Forms.TextBox Solution;
         private System.Windows.Forms.GroupBox groupBox2;
+        internal System.Windows.Forms.TextBox OutputParametrM;
+        internal System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox Sigma;
+        private System.Windows.Forms.Button buttonSpeed;
     }
 }
